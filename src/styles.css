@@ -98,8 +98,26 @@ img {
   height: 10px;
 }
 
+img:hover {
+  cursor: pointer;
+  animation: rotate 3s infinite; /* Add linear for smooth rotation */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .ass {
-  flex-direction: column;
+  flex-direction: row;
+  background-color: #ff00ff;
+  border-radius: 50px;
+  align-items: center;
+  display: flex;
 }
 
 .body__row {
