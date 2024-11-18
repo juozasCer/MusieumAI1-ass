@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "typeRoots": ["node_modules/@types"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "outDir": "./dist/", // Build output directory
     "sourceMap": false, // Disable source maps for production
     "noImplicitAny": true, // Strict type checking

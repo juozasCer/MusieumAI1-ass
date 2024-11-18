@@ -7,6 +7,7 @@ import { Group, Scene, Texture, Mesh, VideoTexture } from 'three';
 import { velocity, direction, moveForward, moveBackward, moveLeft, moveRight } from './controls';
 import * as backgroundmodule from "./background"
 import { Reflector } from 'three/examples/jsm/objects/Reflector.js';
+import Stats from 'stats.js'; // Import Stats.js
 
 // Initialize RectAreaLightUniformsLib (necessary for RectAreaLight)
 RectAreaLightUniformsLib.init();
@@ -40,6 +41,11 @@ let isBackgroundInitialized = false;
 
 let isEverythingLoaded = false;
 
+// Initialize Stats
+const stats = new Stats();
+stats.showPanel(0); // 0: FPS, 1: ms, 2: mb, 3+: custom
+document.body.appendChild(stats.dom);
+
 // Pointer lock event listeners
 document.addEventListener('click', () => {
   if (isEverythingLoaded && !controls.isLocked) {
@@ -48,6 +54,7 @@ document.addEventListener('click', () => {
     }, 300);
   }
 }, false);
+
 // Flag to ensure background is initialized only once
 
 // Handle Pointer Lock 'lock' event
@@ -358,7 +365,7 @@ function loadModel() {
       model.scale.set(1.5, 1.5, 1.5);
       model.traverse((child) => {
         if (child instanceof THREE.Mesh) {
-          console.log(child.name);
+          // console.log(child.name);
           
           child.castShadow = true;
           child.receiveShadow = true; // Enable shadow casting for each mesh
@@ -367,13 +374,13 @@ function loadModel() {
 
       // Apply video material to specific meshes
       applyVideoMaterial(model, 'Screenshot_2024-11-14_125839', '/media/video.mp4');
-      applyVideoMaterial(model, 'Object_0010_1', '/media/act.mp4');
+      applyVideoMaterial(model, 'Object_0131_1', '/media/act.mp4');
 
       model.traverse((child) => {
         if (child instanceof Mesh) {
           // console.log(child.name); // Log each mesh name
-          if (child.name === "Object_0010_1") { // Example: Apply red material to "Text010"
-            child.material = new THREE.MeshBasicMaterial({ color: 0xff0000,transparent:true,opacity:1 }); // Red color for testing
+          if (child.name === "Object_0131_1") { // Example: Apply red material to "Text010"
+            // child.material = new THREE.MeshBasicMaterial({ color: 0xff0000,transparent:true,opacity:1 }); // Red color for testing
             // child.position.set(0, -0.1, 0.5); 
           }
         }
@@ -391,7 +398,7 @@ function loadModel() {
 // ADD REFLECTOR PLANE
 addReflectorPlane(); // **Added Reflector Plane**
 
- // Function to add a Reflector Plane
+// Function to add a Reflector Plane
 function addReflectorPlane() { // **Added Function**
   const WIDTH = 80; // Same as floor width
   const LENGTH = 80; // Same as floor length
@@ -488,6 +495,8 @@ animateLoadingMatrix();
 function animate() {
   requestAnimationFrame(animate);
 
+  stats.begin(); // Start measuring FPS
+
   const delta = clock.getDelta();
   const elapsedTime = clock.getElapsedTime();
 
@@ -529,6 +538,8 @@ function animate() {
   });
 
   renderer.render(scene, camera);
+
+  stats.end(); // End measuring FPS
 }
 animate();
 
