@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/", // Build output directory
+    "sourceMap": false, // Disable source maps for production
+    "noImplicitAny": true, // Strict type checking
+    "module": "ESNext", // Modern module system
+    "target": "ES6", // Modern JavaScript target
+    "allowJs": true, // Allow JavaScript files
+    "strict": true // Enforce stricter type checks
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
