@@ -237,8 +237,8 @@ img:hover {
 }
 #sound-toggle {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 50px;
+  right: 80px;
   width: 50px;
   z-index: 1000;
   height: 50px;
