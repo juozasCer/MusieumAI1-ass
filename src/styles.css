@@ -100,24 +100,18 @@ img {
 
 img:hover {
   cursor: pointer;
-  animation: rotate 3s infinite; /* Add linear for smooth rotation */
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  opacity: 0.7;
 }
 
 .ass {
   flex-direction: row;
-  background-color: #ff00ff;
+  background-color: #c9bec998;
   border-radius: 50px;
   align-items: center;
   display: flex;
+  bottom: 40px;
+  /* height: 60px; */
+  position: absolute;
 }
 
 .body__row {
@@ -125,7 +119,10 @@ img:hover {
   line-height: 1.7rem;
   padding: 0 2rem;
   display: flex;
-  align-items: center
+  align-items: center;
+  font-size: x-large;
+  position: absolute;
+  top: 40px;
 }
 
 .body__row-arrow {
@@ -171,5 +168,70 @@ img:hover {
   height: 1.5rem;
   background-color: #bb6bd9;
   border: 1px solid #bb6bd9;
-  animation: flash 1s ease-in-out infinite
+  animation: flash 1.5s ease-in-out infinite
+}
+
+@keyframes flash {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+/* Keyboard style */
+.keyboard {
+  padding: 2.5em 0;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 400px;
+  margin: 0 auto;
+}
+/* Top row for keyboard */
+.top-row {
+  width: 140px;
+  /* Off Centered */
+  /* width: 190px; */
+  margin: 0 auto;
+  display: flex
+;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+/* Bottom row for keyboard */
+.bottom-row {
+  display: inline-flex;
+}
+
+/* Style for each Key */
+.key {
+  background-color: #ffffff75;
+  border: 1px solid #000000;
+  box-shadow: 0px 5px 1px 5px #ffffff36;
+  color: #ffffff;
+  width: 50px;
+  BORDER-RADIUS: 50PX;
+  height: 50px;
+  margin: 15px;
+  text-align: center;
+  top: 0;
+  left: 0;
+  transition: all 0.07s ease;
+}
+/* Active Class for Key */
+.activeKey {
+  transform: scale(1.1);
+  position: relative;
+  top: 0.2em;
+  left: 0.2em;
+  box-shadow: 0 0 0 0;
+}
+/* Sets font size for each Key */
+.key > p {
+  /* font-size: 2em; */
 }

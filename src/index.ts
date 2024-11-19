@@ -194,7 +194,7 @@ blinkingLights.push(
     0x0000ff,               // Color
     2,                      // Initial Intensity
     10,                     // Distance
-    new THREE.Vector3(-3, 1.5, -49.5), // Position
+    new THREE.Vector3(0, 1.5, -49.5), // Position
     0.2,                    // Speed
     0,                      // Min Intensity
     10                      // Max Intensity
@@ -214,12 +214,45 @@ blinkingLights.push(
 );
 blinkingLights.push(
   new BlinkingLight(
-    0x0000ff,               // Color
+    0x00ffff,               // Color
     20,                      // Initial Intensity
     10,                     // Distance
     new THREE.Vector3(0, 5, 0), // Position
     1,                    // Speed
     0,                      // Min Intensity
+    10                      // Max Intensity
+  )
+);
+blinkingLights.push(
+  new BlinkingLight(
+    0xff00ff,               // Color
+    20,                      // Initial Intensity
+    10,                     // Distance
+    new THREE.Vector3(8, 7, 0), // Position
+    1,                    // Speed
+    10,                      // Min Intensity
+    10                      // Max Intensity
+  )
+);
+blinkingLights.push(
+  new BlinkingLight(
+    0xff00ff,               // Color
+    20,                      // Initial Intensity
+    10,                     // Distance
+    new THREE.Vector3(-8, 7, 0), // Position
+    1,                    // Speed
+    10,                      // Min Intensity
+    10                      // Max Intensity
+  )
+);
+blinkingLights.push(
+  new BlinkingLight(
+    0xff00ff,               // Color
+    20,                      // Initial Intensity
+    10,                     // Distance
+    new THREE.Vector3(0, 15, -3), // Position
+    1,                    // Speed
+    10,                      // Min Intensity
     10                      // Max Intensity
   )
 );
