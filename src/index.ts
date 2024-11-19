@@ -51,7 +51,7 @@ document.addEventListener('click', () => {
   if (isEverythingLoaded && !controls.isLocked) {
     setTimeout(() => {
       controls.lock(); // Lock the pointer after a 1 second delay
-    }, 300);
+    }, 0);
   }
 }, false);
 
@@ -612,14 +612,15 @@ const soundIcon = document.getElementById('sound-icon') as HTMLImageElement; // 
 if (soundToggle && soundIcon) {
   // Handle Sound Toggle Click
   let isMuted = false; // Track sound state
-  soundToggle.addEventListener('click', () => {
+  soundToggle.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent click event from bubbling up
     isMuted = !isMuted;
     if (isMuted) {
       audio.muted = true;
-      soundIcon.src = 'images/umute.svg'; // Change to mute icon
+      soundIcon.src = 'images/mute.svg'; // Change to mute icon
     } else {
       audio.muted = false;
-      soundIcon.src = 'images/mute.svg'; // Change to sound icon
+      soundIcon.src = 'images/umute.svg'; // Change to sound icon
     }
   });
 
