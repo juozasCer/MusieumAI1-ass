@@ -601,7 +601,7 @@ window.addEventListener('resize', onWindowResize);
 // Sound Setup
 const audio = new Audio('./media/music.mp3');
 audio.loop = true;
-audio.volume = 0.5; // Set initial volume
+audio.volume = 0.2; // Set initial volume
 
 
 // Sound Toggle Button
