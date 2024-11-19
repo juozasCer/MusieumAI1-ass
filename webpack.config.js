@@ -53,7 +53,8 @@ module.exports = {
         { from: 'src/media', to: 'media' }, // Copy media folder
         { from: 'src/models', to: 'models' }, // Copy models folder
         { from: 'src/textures', to: 'textures' },
-        { from: 'src/styles.css', to: 'styles.css' }, // Copy textures folder
+        { from: 'src/styles.css', to: 'styles.css' },
+        { from: 'favicon.ico', to: 'favicon.ico' }, 
       ],
     }),
   ],
