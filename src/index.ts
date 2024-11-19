@@ -296,9 +296,18 @@ function applyVideoMaterial(model: Group | Scene, meshName: string, videoURL: st
 
   // Wait for the video to be ready to play
   video.addEventListener('canplaythrough', () => {
-    console.log(`Video ${videoURL} is ready to play.`);
-    video.play();
+    // console.log(`Video ${videoURL} is ready to play.`);
 
+    document.addEventListener('click', () => {
+    //   video.play().catch((err) => {
+    //     console.error('Video play failed:', err);
+    //   });
+      audio.play().catch((err) => {
+        console.error('Audio play failed:', err);
+      });
+    });
+    video.play();
+    // audio.play(); // Start playing on load
     // Create a VideoTexture
     const videoTexture = new THREE.VideoTexture(video);
     videoTexture.minFilter = THREE.LinearFilter;
@@ -589,3 +598,39 @@ window.addEventListener('resize', onWindowResize);
 
 // Initialize Lights
 // light(); // Ensure lights are added to the scene
+// Sound Setup
+const audio = new Audio('./media/music.mp3');
+audio.loop = true;
+audio.volume = 0.5; // Set initial volume
+
+
+// Sound Toggle Button
+const soundToggle = document.getElementById('sound-toggle');
+const soundIcon = document.getElementById('sound-icon') as HTMLImageElement; // Cast to HTMLImageElement
+
+// Check if elements exist before adding event listeners
+if (soundToggle && soundIcon) {
+  // Handle Sound Toggle Click
+  let isMuted = false; // Track sound state
+  soundToggle.addEventListener('click', () => {
+    isMuted = !isMuted;
+    if (isMuted) {
+      audio.muted = true;
+      soundIcon.src = 'images/umute.svg'; // Change to mute icon
+    } else {
+      audio.muted = false;
+      soundIcon.src = 'images/mute.svg'; // Change to sound icon
+    }
+  });
+
+  // Optional: Adjust hover opacity for visual feedback
+  soundToggle.addEventListener('mouseover', () => {
+    soundIcon.style.opacity = '0.5';
+  });
+
+  soundToggle.addEventListener('mouseout', () => {
+    soundIcon.style.opacity = '1';
+  });
+} else {
+  console.error('Sound toggle or sound icon element is missing.');
+}
