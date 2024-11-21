@@ -68,6 +68,7 @@ controls.addEventListener('lock', () => {
 
     // Play the audio only once, when the pointer is locked for the first time
     if (!isAudioPlayed) {
+      audio.volume = 0.1;
       audio.play().catch((err) => {
         console.error('Audio play failed:', err);
       });
@@ -606,7 +607,7 @@ audio.loop = true;
 audio.addEventListener('loadeddata', () => {
   console.log('Audio loaded.');
   audio.volume = 0.1; // Set initial volume
-  audio.play().catch(err => console.error('Audio play failed:', err));
+  // audio.play().catch(err => console.error('Audio play failed:', err));
 });// Set initial volume
 
 
