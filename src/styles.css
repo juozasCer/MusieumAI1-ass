@@ -120,43 +120,34 @@ img:hover {
   padding: 0 2rem;
   display: flex;
   align-items: center;
-  font-size: x-large;
+  font-size:40px;
   position: absolute;
-  top: 40px;
-}
-
-.body__row-arrow {
-  width: .8rem;
-  height: .6rem;
-  background-color: #40e800;
-  -webkit-clip-path: polygon(0 30%, 60% 30%, 60% 0, 100% 50%, 60% 100%, 60% 70%, 0 70%);
-  clip-path: polygon(0 30%, 60% 30%, 60% 0, 100% 50%, 60% 100%, 60% 70%, 0 70%);
-  margin-right: .9rem
+  top: 80px;
 }
 
 .body__row-folder {
-  color: #56f2e6;
+  color: #ffffff;
   margin-right: 1rem
 }
 
 .body__row-git--label {
-  color: #2d9cdb
+  color: #ffffff
 }
 
 .body__row-git--branch {
-  color: #40e800
+  color: #ffffff
 }
 
 .body__row-git--branch-detail {
-  color: #f2c94c
+  color: #ffffff
 }
 
 .body__row-git--branch-time {
-  color: #27ae60
+  color: #ffffff
 }
 
 .body__row-git--author {
-  color: #2d9cdb
+  color: #ffffff
 }
 
 .body__row-result {
@@ -166,8 +157,8 @@ img:hover {
 .body__row-cursor {
   width: .5rem;
   height: 1.5rem;
-  background-color: #bb6bd9;
-  border: 1px solid #bb6bd9;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
   animation: flash 1.5s ease-in-out infinite
 }
 
@@ -231,10 +222,7 @@ img:hover {
   left: 0.2em;
   box-shadow: 0 0 0 0;
 }
-/* Sets font size for each Key */
-.key > p {
-  /* font-size: 2em; */
-}
+
 #sound-toggle {
   position: absolute;
   bottom: 50px;
@@ -256,3 +244,8 @@ img:hover {
   opacity: 0.5;
 }
 
+.tkr{
+  font-size: 35px;
+  position: absolute;
+  top:60px;
+}

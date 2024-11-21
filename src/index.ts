@@ -7,7 +7,7 @@ import { Group, Scene, Texture, Mesh, VideoTexture } from 'three';
 import { velocity, direction, moveForward, moveBackward, moveLeft, moveRight } from './controls';
 import * as backgroundmodule from "./background"
 import { Reflector } from 'three/examples/jsm/objects/Reflector.js';
-import Stats from 'stats.js'; // Import Stats.js
+// import Stats from 'stats.js'; // Import Stats.js
 
 // Initialize RectAreaLightUniformsLib (necessary for RectAreaLight)
 RectAreaLightUniformsLib.init();
@@ -42,9 +42,9 @@ let isBackgroundInitialized = false;
 let isEverythingLoaded = false;
 
 // Initialize Stats
-const stats = new Stats();
-stats.showPanel(0); // 0: FPS, 1: ms, 2: mb, 3+: custom
-document.body.appendChild(stats.dom);
+// const stats = new Stats();
+// stats.showPanel(0); // 0: FPS, 1: ms, 2: mb, 3+: custom
+// document.body.appendChild(stats.dom);
 
 // Pointer lock event listeners
 document.addEventListener('click', () => {
@@ -56,7 +56,7 @@ document.addEventListener('click', () => {
 }, false);
 
 // Flag to ensure background is initialized only once
-
+let isAudioPlayed = false;
 // Handle Pointer Lock 'lock' event
 controls.addEventListener('lock', () => {
   const instructions = document.getElementById('instructions');
@@ -65,6 +65,15 @@ controls.addEventListener('lock', () => {
     instructions.style.display = 'none';
     blocker.style.display = 'none';
   }
+
+    // Play the audio only once, when the pointer is locked for the first time
+    if (!isAudioPlayed) {
+      audio.play().catch((err) => {
+        console.error('Audio play failed:', err);
+      });
+      isAudioPlayed = true; // Ensure audio only starts once
+    }
+  
 
   // Initialize Background only once when the pointer is locked
   if (!isBackgroundInitialized) {
@@ -298,14 +307,6 @@ function applyVideoMaterial(model: Group | Scene, meshName: string, videoURL: st
   video.addEventListener('canplaythrough', () => {
     // console.log(`Video ${videoURL} is ready to play.`);
 
-    document.addEventListener('click', () => {
-    //   video.play().catch((err) => {
-    //     console.error('Video play failed:', err);
-    //   });
-      audio.play().catch((err) => {
-        console.error('Audio play failed:', err);
-      });
-    });
     video.play();
     // audio.play(); // Start playing on load
     // Create a VideoTexture
@@ -537,7 +538,7 @@ animateLoadingMatrix();
 function animate() {
   requestAnimationFrame(animate);
 
-  stats.begin(); // Start measuring FPS
+  // stats.begin(); // Start measuring FPS
 
   const delta = clock.getDelta();
   const elapsedTime = clock.getElapsedTime();
@@ -581,7 +582,7 @@ function animate() {
 
   renderer.render(scene, camera);
 
-  stats.end(); // End measuring FPS
+  // stats.end(); // End measuring FPS
 }
 animate();
 
@@ -634,4 +635,35 @@ if (soundToggle && soundIcon) {
   });
 } else {
   console.error('Sound toggle or sound icon element is missing.');
+}
+
+// Get the "LOADING..." text element and assert that it's an HTML element
+const loadingText = document.querySelector('.body__row-result') as HTMLElement | null;
+
+// Check if the element exists before proceeding
+if (loadingText) {
+  // Hover effect to change opacity
+  loadingText.addEventListener('mouseover', () => {
+    loadingText.style.opacity = '0.5'; // Set opacity to 0.5 on hover
+  });
+
+  loadingText.addEventListener('mouseout', () => {
+    loadingText.style.opacity = '1'; // Reset opacity when not hovering
+  });
+
+  // Click event to copy the contents to the clipboard
+  loadingText.addEventListener('click', () => {
+    if (loadingText) {
+      const textToCopy = loadingText.innerText; // Get the text inside the span
+
+      // Use the Clipboard API to copy the text
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        alert('Copied to clipboard: ' + textToCopy); // Optional: Alert user
+      }).catch(err => {
+        console.error('Error copying text: ', err); // Handle errors
+      });
+    }
+  });
+} else {
+  console.warn("The element '.body__row-result' was not found.");
 }
