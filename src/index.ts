@@ -605,7 +605,7 @@ audio.loop = true;
 // Ensure audio loads correctly
 audio.addEventListener('loadeddata', () => {
   console.log('Audio loaded.');
-  audio.volume = 0; // Set initial volume
+  audio.volume = 0.1; // Set initial volume
   audio.play().catch(err => console.error('Audio play failed:', err));
 });// Set initial volume
 
