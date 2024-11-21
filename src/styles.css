@@ -327,3 +327,82 @@ img:hover {
   width: 100%;
   margin: 13px;
  }
+
+ /* Mobile Content Styles */
+ #mobile-content {
+  height: 100vh;
+ }
+
+ /* Style for the video to cover the entire screen */
+ #background-video {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   z-index: -1;
+ }
+
+ /* Style for overlay content on mobile */
+ #overlay-content {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-end;
+   /* Adjust as needed */
+ }
+
+ /* Style for social icons on mobile */
+ #mobile-content .ass {
+   position: absolute;
+   bottom: 20px;
+   left: 20px;
+   padding: 5px;
+ }
+
+ /* Style for contact address on mobile */
+ #contact-address {
+   position: absolute;
+   bottom: 155px;
+   left: 20px;
+   color: white;
+   font-size: 38px;
+ }
+/* Existing styles... */
+
+/* Mobile Overlay Styles */
+#mobile-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#play-button {
+  font-family: "CustomFont";
+  font-size: 50px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: none;
+  height: 130px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+#play-button:hover {
+  background-color: #e0e0e0;
+}
+
+#mobile-content img {
+ margin: 5px;
+}

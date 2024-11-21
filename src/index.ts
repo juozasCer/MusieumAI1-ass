@@ -9,11 +9,21 @@ import * as backgroundmodule from "./background"
 import { Reflector } from 'three/examples/jsm/objects/Reflector.js';
 // import Stats from 'stats.js'; // Import Stats.js
 
+function isMobileDevice(): boolean {
+  return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1) || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// **Declare variables at the top level**
+export let scene: THREE.Scene;
+export let renderer: THREE.WebGLRenderer;
+
+if (!isMobileDevice()) {
+
 // Initialize RectAreaLightUniformsLib (necessary for RectAreaLight)
 RectAreaLightUniformsLib.init();
 
 // SCENE
-export const scene = new THREE.Scene();
+scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000); // Initial background color
 
 // CAMERA
@@ -26,7 +36,7 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 1.6, 0); // First-person camera at height 1.6
 
 // RENDERER
-export const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.shadowMap.enabled = true;
@@ -68,10 +78,11 @@ controls.addEventListener('lock', () => {
 
     // Play the audio only once, when the pointer is locked for the first time
     if (!isAudioPlayed) {
-      audio.volume = 0.1;
+      audio.volume = 0.2;
       audio.play().catch((err) => {
         console.error('Audio play failed:', err);
       });
+      audio.volume = 0.2;
       isAudioPlayed = true; // Ensure audio only starts once
     }
   
@@ -601,12 +612,12 @@ window.addEventListener('resize', onWindowResize);
 // Initialize Lights
 // light(); // Ensure lights are added to the scene
 // Sound Setup
-const audio = new Audio('./media/music.mp3');
+const audio = new Audio('./media/ass.mp3');
 audio.loop = true;
 // Ensure audio loads correctly
 audio.addEventListener('loadeddata', () => {
   console.log('Audio loaded.');
-  audio.volume = 0.1; // Set initial volume
+  audio.volume = 0.2; // Set initial volume
   // audio.play().catch(err => console.error('Audio play failed:', err));
 });// Set initial volume
 
@@ -672,4 +683,8 @@ if (loadingText) {
   });
 } else {
   console.warn("The element '.body__row-result' was not found.");
+}
+} else {
+  // If on mobile, do not run the Three.js code
+  console.log('Mobile device detected. Three.js code will not run.');
 }
