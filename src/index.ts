@@ -212,7 +212,7 @@ blinkingLights.push(
 
 blinkingLights.push(
   new BlinkingLight(
-    0xff00ff,               // Color
+    0x7F00FF,               // Color
     20,                      // Initial Intensity
     15,                     // Distance
     new THREE.Vector3(0, 7,0), // Position
@@ -234,7 +234,7 @@ blinkingLights.push(
 );
 blinkingLights.push(
   new BlinkingLight(
-    0xff00ff,               // Color
+    0x7F00FF,               // Color
     20,                      // Initial Intensity
     10,                     // Distance
     new THREE.Vector3(8, 7, 0), // Position
@@ -245,7 +245,7 @@ blinkingLights.push(
 );
 blinkingLights.push(
   new BlinkingLight(
-    0xff00ff,               // Color
+    0x7F00FF,               // Color
     20,                      // Initial Intensity
     10,                     // Distance
     new THREE.Vector3(-8, 7, 0), // Position
@@ -256,7 +256,7 @@ blinkingLights.push(
 );
 blinkingLights.push(
   new BlinkingLight(
-    0xff00ff,               // Color
+    0x7F00FF,               // Color
     20,                      // Initial Intensity
     10,                     // Distance
     new THREE.Vector3(0, 15, -3), // Position
@@ -602,7 +602,12 @@ window.addEventListener('resize', onWindowResize);
 // Sound Setup
 const audio = new Audio('./media/music.mp3');
 audio.loop = true;
-audio.volume = 0.2; // Set initial volume
+// Ensure audio loads correctly
+audio.addEventListener('loadeddata', () => {
+  console.log('Audio loaded.');
+  audio.volume = 0.15; // Set initial volume
+  audio.play().catch(err => console.error('Audio play failed:', err));
+});// Set initial volume
 
 
 // Sound Toggle Button

@@ -125,15 +125,6 @@ img:hover {
   top: 80px;
 }
 
-.body__row-folder {
-  color: #ffffff;
-  margin-right: 1rem
-}
-
-.body__row-git--label {
-  color: #ffffff
-}
-
 .body__row-git--branch {
   color: #ffffff
 }
@@ -249,3 +240,80 @@ img:hover {
   position: absolute;
   top:60px;
 }
+
+
+/* Holo Effect Container */
+#holo-effect-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* Adjust as needed */
+  height: 100%; /* Adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Holo Effect Styles */
+#holo-effect {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Slight background */
+  border: 2px solid rgba(0, 255, 255, 0.5); /* Cyan border */
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 
+              0 0 50px rgba(0, 255, 255, 0.4);
+  animation: flicker 3s infinite;
+}
+
+/* Holo Overlay for Scan Lines */
+.holo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgb(0 255 255 / 0%) 10%, transparent 50%, rgb(0 255 255 / 7%) 90%);
+  background-size: 100% 1%;
+  animation: scan-lines 2s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Holo Effect Image
+#holo-effect img {
+  width: 100%;
+  height: auto;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 10px cyan) brightness(1.5);
+  z-index: 2;
+} */
+
+/* Flicker Animation */
+@keyframes flicker {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6), 0 0 30px rgba(0, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.9), 0 0 50px rgba(0, 255, 255, 0.5);
+  }
+}
+
+/* Scan Lines Animation */
+@keyframes scan-lines {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 -100%;
+  }
+}
+ .play{
+  z-index: 1;
+ }
