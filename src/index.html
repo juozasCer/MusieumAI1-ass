@@ -102,36 +102,34 @@
     </div>
 
   <!-- Mobile Content -->
-  <div id="mobile-content">
-    <!-- Fullscreen Video -->
-    <video id="background-video">
-      <source src="media/MOBILE.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <!-- Overlayed Socials and Contact Address -->
-    <div id="overlay-content">
-      <!-- Click to Play Overlay -->
-      <div id="mobile-overlay">
-        <button id="play-button">PLAY</button>
-      </div>
-      <!-- Socials -->
-      <div class="ass">
-        <a href="https://x.com/MuseumAI_" target="_blank">
-          <img src="images/x.svg" alt="X.com" style="width:100px; height:100px;" />
-        </a>
-        <a href="https://pump.fun" target="_blank">
-          <img src="images/pu.svg" alt="Pump.fun" style="width:100px; height:100px;" />
-        </a>
-        <a href="https://dexscreener.com" target="_blank">
-          <img src="images/dex.svg" alt="Dex Screener" style="width:100px; height:100px;" />
-        </a>
-      </div>
-      <!-- Contact Address -->
-      <div id="contact-address">
-        Official CA: AXNgt2tyXdoNR3VaXqtN8E91m9ZwKCJrVHAX6r7Dpump
+    <!-- Mobile Content -->
+    <div id="mobile-content" style="display: none;">
+      <!-- Fullscreen Video -->
+      <video id="background-video" autoplay loop muted playsinline style="position: fixed; right: 0; bottom: 0; min-width: 100%; min-height: 100%;">
+        <source src="media/MOBILE.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- Overlayed Socials and Contact Address -->
+      <div id="overlay-content" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+        <!-- Overlay content -->
+        <!-- Socials -->
+        <div class="ass" style="position: absolute; bottom: 20px; left: 20px;">
+          <a href="https://x.com/MuseumAI_" target="_blank">
+            <img src="images/x.svg" alt="X.com" style="width:100px; height:100px;" />
+          </a>
+          <a href="https://pump.fun" target="_blank">
+            <img src="images/pu.svg" alt="Pump.fun" style="width:100px; height:100px;" />
+          </a>
+          <a href="https://dexscreener.com" target="_blank">
+            <img src="images/dex.svg" alt="Dex Screener" style="width:100px; height:100px;" />
+          </a>
+        </div>
+        <!-- Contact Address -->
+        <div id="contact-address">
+          Official CA: AXNgt2tyXdoNR3VaXqtN8E91m9ZwKCJrVHAX6r7Dpump
+        </div>
       </div>
     </div>
-  </div>
 
   <!-- Device Detection Script -->
   <script>
@@ -142,19 +140,9 @@
     if (isMobileDevice()) {
       // User is on a mobile device
       document.getElementById('desktop-content').style.display = 'none';
-      // document.getElementById('mobile-content').style.display = 'block';
-
-      // Add event listener for play button
-      document.getElementById('play-button').addEventListener('click', function() {
-        var video = document.getElementById('background-video');
-        video.play();
-        video.volume = 1.0; // Set the volume to maximum
-        // Hide the overlay after playing
-        document.getElementById('mobile-overlay').style.display = 'none';
-      });
-    } 
-    else
-    {
+      document.getElementById('mobile-content').style.display = 'block';
+    }
+    else {
       document.getElementById('mobile-content').style.display = 'none';
     }
   </script>
